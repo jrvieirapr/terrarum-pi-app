@@ -11,10 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->lineString('Nome');
+            $table->lineString('Tipo')->unique();
+            $table->lineString('Descrição');
+            $table->integer('coordenadas')->unique();
+            $table->double('Valor')->unique();
+            $table->lineString('OBS');
+            $table->bigInteger('produtos_id');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

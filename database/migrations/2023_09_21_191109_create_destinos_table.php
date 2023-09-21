@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_produtos', function (Blueprint $table) {
+        Schema::disableForeignKeyConstraints();
+
+        Schema::create('destinos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->bigInteger('coordenadas');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_produtos');
+        Schema::dropIfExists('destinos');
     }
 };
