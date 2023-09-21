@@ -11,7 +11,7 @@ class UpdateDestinoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,8 @@ class UpdateDestinoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'coordenadas'=> 'required|min:1|max:15|unique:destinos,coordenadas, '
+            . $this->route('destino') . ',id|required',
             //
         ];
     }

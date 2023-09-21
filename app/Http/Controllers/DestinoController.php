@@ -13,6 +13,9 @@ class DestinoController extends Controller
      */
     public function index()
     {
+        $destino = Destino::all();
+        //Retornar lista em formato json
+        return response()->json(['data' => $destino]);
         //
     }
 
@@ -29,14 +32,25 @@ class DestinoController extends Controller
      */
     public function store(StoreDestinoRequest $request)
     {
+        $destino = Destino::create($request->all());
+
+        // // Retorne o tipo e o code 201
+        return response()->json($destino, 201);
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Destino $destino)
+    public function show($id)
     {
+        $destino = Destino::find($id);
+
+        if (!$destino) {
+            return response()->json(['message' => 'Destino não encontrado'], 404);
+        }
+
+        return response()->json($destino);
         //
     }
 
@@ -53,6 +67,7 @@ class DestinoController extends Controller
      */
     public function update(UpdateDestinoRequest $request, Destino $destino)
     {
+        
         //
     }
 

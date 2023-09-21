@@ -11,7 +11,7 @@ class StoreDestinoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,7 @@ class StoreDestinoRequest extends FormRequest
     {
         return [
             //
+            'coordenadas'=> 'required|min:1|max:15|unique:destinos,coordenadas, '
         ];
     }
 }
