@@ -13,7 +13,11 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        //pegar a lista do banco
+        $eventos = Evento::all();
+
+        //retornar lista em formato json
+        return response()->json(['data' => $eventos]);
     }
 
     /**
@@ -29,7 +33,7 @@ class EventoController extends Controller
      */
     public function store(StoreEventoRequest $request)
     {
-        //
+        // crie um novo evento
     }
 
     /**
