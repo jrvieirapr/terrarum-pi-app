@@ -24,18 +24,9 @@ class DestinoTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => ['nome','coordenadas', 'created_at', 'updated_at']
+
                 ]
             ]);
-    }
-    
-    
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
+    }   
+   
 }
