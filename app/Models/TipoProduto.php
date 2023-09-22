@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TipoProduto extends Model
 {
     use HasFactory;
+
+
+protected $filablle = ['descricao'];
+
 }
+

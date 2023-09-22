@@ -13,22 +13,21 @@ class TipoProdutoController extends Controller
      */
     public function index()
     {
-        //
+        $tipos_produtos = TipoProduto::all();
+         $tipos_produtos = TipoProduto::Paginate(50);
+        $total = TipoProduto::all()->count();
+        return view("tipos_produtos.index", compact(["tipos_produtos", "total"]));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreTipoProdutoRequest $request)
     {
+        //$data = $request->all();
+        $tipos = TipoProduto::create($data);
+        return redirect()->route('tiposprodutos.index');
         //
     }
 
@@ -37,24 +36,21 @@ class TipoProdutoController extends Controller
      */
     public function show(TipoProduto $tipoProduto)
     {
-        //
+        return view("tipos_produtos.show", compact(["tipoProduto"]));
+    
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TipoProduto $tipoProduto)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTipoProdutoRequest $request, TipoProduto $tipoProduto)
+    public function update(UpdateTipoBichoRequest $request, TipoBicho $tiposbicho)
     {
-        //
+        $data = $request->all();
+        $tiposbicho->update($data);
+        return redirect()->route('tiposbichos.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -62,5 +58,13 @@ class TipoProdutoController extends Controller
     public function destroy(TipoProduto $tipoProduto)
     {
         //
+        if (isset($tiposproduto)) {
+            $tiposproduto->delete();
+            //
+        }
+        return redirect()->route('tiposprodutos.index');
     }
-}
+
+
+    
+
