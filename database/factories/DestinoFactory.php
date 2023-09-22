@@ -17,6 +17,9 @@ class DestinoFactory extends Factory
     public function definition(): array
     {
         return [
+
+            'coordenadas'=>"". $this->faker->word." ".
+            $this->faker->numberBetween($int1 = 0, $int2 = 99999)
             //
         ];
     }

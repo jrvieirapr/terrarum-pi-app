@@ -22,6 +22,8 @@ class UpdateDestinoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'nome'=> 'required|min:1|max:20,'
+            . $this->route('destino') . ',id|required',
             'coordenadas'=> 'required|min:1|max:15|unique:destinos,coordenadas, '
             . $this->route('destino') . ',id|required',
             //

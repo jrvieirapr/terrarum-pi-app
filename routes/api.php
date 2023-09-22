@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DestinoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+//Rotas Destinos
+Route::middleware('api')->prefix('destinos')->group(function () {
+    Route::get('/', [DestinoControlleroller::class, 'index']);
+    Route::post('/', [DestinoController::class, 'store']);
+    Route::get('/{destino}', [DestinoController::class, 'show']);
+    Route::put('/{destino}', [DestinoController::class, 'update']);
+    Route::delete('/{destino}', [DestinoController::class, 'destroy']);
 });

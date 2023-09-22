@@ -9,5 +9,5 @@ class Destino extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['coordenadas'];
+    protected $fillable = ['nome','coordenadas'];
 }
