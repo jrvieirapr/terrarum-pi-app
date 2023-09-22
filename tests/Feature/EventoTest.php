@@ -2,19 +2,17 @@
 
 namespace Tests\Feature;
 
+use App\Models\Evento;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class EventoTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
+  use RefreshDatabase, WithFaker;
 
-        $response->assertStatus(200);
-    }
+  public function testListarEventos() {
+    Evento::factory()->count(5)->create();
+    $response = $this->getJson('/api/eventos');
+  }
 }

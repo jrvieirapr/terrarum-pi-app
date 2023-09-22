@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
+            $table->string('Nome');
+            $table->string('Tipo')->unique();
+            $table->string('Descricao');
+            $table->integer('Coordenadas')->unique();
+            $table->double('valor')->unique();
+            $table->string('Obs');
+            $table->bigInteger('tipoprodutos_id');
+            $table->foreign('tipoprodutos_id')->references('id')->on('tipoprodutos');
+            $table->bigInteger('destinos_id');
+            $table->foreign('destinos_id')->references('id')->on('destinos');
             $table->timestamps();
         });
     }
