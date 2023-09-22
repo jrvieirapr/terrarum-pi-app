@@ -11,10 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
+
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->lineString('Nome');
+            $table->integer('CPF/CNPJ')->unique();
+            $table->lineString('CEP');
+            $table->lineString('nº');
+            $table->lineString('Telefone');
+            $table->bigInteger('login')->unique();
+            $table->bigInteger('senha');
+            $table->lineString('interesses');
         });
+
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
