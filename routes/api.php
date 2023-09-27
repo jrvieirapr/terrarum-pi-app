@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Rotas Destinos
 Route::middleware('api')->prefix('destinos')->group(function () {
-    Route::get('/', [DestinoControlleroller::class, 'index']);
+    Route::get('/', [DestinoController::class, 'index']);
     Route::post('/', [DestinoController::class, 'store']);
     Route::get('/{destino}', [DestinoController::class, 'show']);
     Route::put('/{destino}', [DestinoController::class, 'update']);

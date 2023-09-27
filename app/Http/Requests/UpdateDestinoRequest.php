@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Destino;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateDestinoRequest extends FormRequest
@@ -22,11 +23,13 @@ class UpdateDestinoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'=> 'required|min:1|max:20,'
-            . $this->route('destino') . ',id|required',
-            'coordenadas'=> 'required|min:1|max:15|unique:destinos,coordenadas, '
+            'nome'=> 'required|min:1|max:20',
+            'coordenadas'=> 'required|min:1|unique:destinos,coordenadas,'
             . $this->route('destino') . ',id|required',
             //
         ];
     }
+
+    
+
 }
