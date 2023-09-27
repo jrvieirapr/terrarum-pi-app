@@ -28,6 +28,8 @@ class UpdateEventoRequest extends FormRequest
             'Coordenadas' =>'min:2|max:50|unique:eventos,coordenada'.$this->route('evento').'|required',
             'valor' =>'min:2|max:10|unique:eventos,valor'.$this->route('evento').'|required',
             'Obs' =>'min:1|max:150|required',
+            'tipoproduto_id' => 'required|integer|exists:tipoprodutos_id',
+            'destino_id' => 'required|integer|exists:destinos_id',
         ];
     }
 }
