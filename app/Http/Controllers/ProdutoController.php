@@ -19,15 +19,6 @@ class ProdutoController extends Controller
         //Retornar lista em formato json
         return response()->json(['data' => $produtos]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -42,32 +33,53 @@ class ProdutoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Produto $produto)
+    public function show($id)
     {
-        //
-    }
+        // procure tipo por id
+        $produto = Produto::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Produto $produto)
-    {
-        //
-    }
+        if (!$produto) {
+            return response()->json(['message' => 'Produto não encontrado'], 404);
+        }
 
+        return response()->json($produto);
+    }
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutoRequest $request, Produto $produto)
+    public function update(UpdateProdutoRequest $request, $id)
     {
-        //
+        // Procure o tipo pela id
+        $produto = Produto::find($id);
+
+        if (!$produto) {
+            return response()->json(['message' => 'Produto não encontrado'], 404);
+        }
+
+        // Faça o update do tipo
+        $produto->update($request->all());
+
+        // Retorne o tipo
+        return response()->json($produto);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produto $produto)
+    public function destroy($id)
     {
-        //
+       // Encontre um tipo pelo ID
+       $produto = Produto::find($id);
+
+       if (!$produto) {
+           return response()->json(['message' => 'Produto não encontrado!'], 404);
+       }  
+
+       //Se tiver dependentes deve retornar erro
+ 
+       // Delete the brand
+       $produto->delete();
+
+       return response()->json(['message' => 'Produto deletado com sucesso!'], 200);
     }
 }
