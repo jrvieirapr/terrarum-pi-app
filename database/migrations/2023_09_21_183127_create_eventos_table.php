@@ -19,13 +19,16 @@ return new class extends Migration
             $table->integer('Coordenadas')->unique();
             $table->double('valor')->unique();
             $table->string('Obs');
-            $table->bigInteger('tipoprodutos_id');
-            $table->foreign('tipoprodutos_id')->references('id')->on('tipoprodutos');
-            $table->bigInteger('destinos_id');
-            $table->foreign('destinos_id')->references('id')->on('destinos');
+            $table->unsignedBigInteger('tipoproduto_id');;
+            $table->foreign('tipoproduto_id')->references('id')->on('tipoprodutos');
+            $table->unsignedBigInteger('destino_id');
+            $table->foreign('destino_id')->references('id')->on('destinos');
             $table->timestamps();
         });
     }
+    //$table->unsignedBigInteger('pedido_id');
+
+      //      $table->foreign('pedido_id')->references('id')->on('pedidos');
 
     /**
      * Reverse the migrations.
