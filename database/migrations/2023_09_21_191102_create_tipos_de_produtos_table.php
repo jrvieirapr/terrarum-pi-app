@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tipos_de_produtos', function (Blueprint $table) {
             $table->id();
             $table->lineString('descricao')->unique();
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

@@ -11,7 +11,7 @@ class StoreTipoProdutoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,7 @@ class StoreTipoProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'descricao'=> 'required|min:1|max:15|unique:TipoProduto,descricao, '
             //
         ];
     }
