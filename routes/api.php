@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Rotas Destinos
 Route::middleware('api')->prefix('destinos')->group(function () {
-    Route::get('/', [DestinoControlleroller::class, 'index']);
+    Route::get('/', [DestinoController::class, 'index']);
     Route::post('/', [DestinoController::class, 'store']);
     Route::get('/{destino}', [DestinoController::class, 'show']);
     Route::put('/{destino}', [DestinoController::class, 'update']);
@@ -33,7 +33,7 @@ Route::middleware('api')->prefix('destinos')->group(function () {
 
 //Rotas Tipo de Produtos
 Route::middleware('api')->prefix('tipos_de_produtos')->group(function () {
-    Route::get('/', [TipoProdutoControlleroller::class, 'index']);
+    Route::get('/', [TipoProdutoController::class, 'index']);
     Route::post('/', [TipoProdutoController::class, 'store']);
     Route::get('/{tipos_de_produtos}', [TipoProdutoController::class, 'show']);
     Route::put('/{tipos_de_produtos}', [TipoProdutoController::class, 'update']);
