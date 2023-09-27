@@ -51,9 +51,4 @@ class EventoTest extends TestCase
   ->assertJsonStructure(['Nome', 'Tipo','Descricao','Coordenadas','valor','Obs', 'tipoproduto_id','destino_id','created_at','updated_at']);
   }
 
-//CRIAR UM EVENTO (FALHA)
-public function testCriarEventoFalha() {
-  $response =
-}
 
-}
