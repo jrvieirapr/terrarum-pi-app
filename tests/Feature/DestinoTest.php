@@ -98,3 +98,4 @@ class DestinoTest extends TestCase
     }
    
 }
+
