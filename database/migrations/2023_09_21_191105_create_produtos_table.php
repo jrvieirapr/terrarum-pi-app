@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->lineString('descricao')->unique();
-            $table->bigInteger('destino_id');
+            $table->unsignedBigInteger('destino_id');
             $table->foreign('destino_id')->references('id')->on('destinos');
-            $table->bigInteger('tipos_de_produtos_id');
-            $table->foreign('tipos_de_produtos_id')->references('id')->on('tipos_de_produtos');
+            $table->unsignedBigInteger('tipo_produto_id');
+            $table->foreign('tipo_produto_id')->references('id')->on('tipos_de_produtos');
             $table->bigInteger('esta_ativo');
         });
 

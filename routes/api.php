@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DestinoController;
 use App\Http\Controllers\EventoController;
+use App\Models\TipoProduto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,18 @@ Route::middleware('api')->prefix('destinos')->group(function () {
     Route::put('/{destino}', [DestinoController::class, 'update']);
     Route::delete('/{destino}', [DestinoController::class, 'destroy']);
 });
+
+//Rotas Tipo de Produtos
+Route::middleware('api')->prefix('tipos_de_produtos')->group(function () {
+    Route::get('/', [TipoProdutoControlleroller::class, 'index']);
+    Route::post('/', [TipoProdutoController::class, 'store']);
+    Route::get('/{tipos_de_produtos}', [TipoProdutoController::class, 'show']);
+    Route::put('/{tipos_de_produtos}', [TipoProdutoController::class, 'update']);
+    Route::delete('/{tipos_de_produtos}', [TipoProdutoController::class, 'destroy']);
+});
+
+
+
 
 //rotas do evento
 Route::middleware('api')->prefix('eventos')->group(function(){

@@ -13,18 +13,14 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('destinos', function (Blueprint $table) {
             $table->id();
-            $table->lineString('Nome');
-            $table->integer('CPF/CNPJ')->unique();
-            $table->lineString('CEP');
-            $table->lineString('nº');
-            $table->lineString('Telefone');
-            $table->bigInteger('login')->unique();
-            $table->bigInteger('senha');
-            $table->lineString('interesses');
+            $table->string('nome');
+            $table->string('coordenadas')->unique();
+            $table->timestamps();
         });
 
+        
         Schema::enableForeignKeyConstraints();
     }
 
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('destinos');
     }
 };

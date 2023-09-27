@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('tipos_de_produtos', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->lineString('descricao')->unique();
+            $table->string('nome');
+            $table->integer('CPF_CNPJ')->unique();
+            $table->string('CEP');
+            $table->string('numero');
+            $table->string('Telefone');
+            $table->string('login')->unique();
+            $table->string('senha');
+            $table->string('interesses');
         });
 
         Schema::enableForeignKeyConstraints();
@@ -26,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos_de_produtos');
+        Schema::dropIfExists('usuarios');
     }
 };

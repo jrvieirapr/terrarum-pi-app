@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('destinos', function (Blueprint $table) {
+        Schema::create('tipos_de_produtos', function (Blueprint $table) {
             $table->id();
-            $table->string('coordenadas')->unique();
+            $table->lineString('descricao')->unique();
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('destinos');
+        Schema::dropIfExists('tipos_de_produtos');
     }
 };

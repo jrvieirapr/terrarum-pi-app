@@ -11,7 +11,7 @@ class UpdateTipoProdutoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,8 @@ class UpdateTipoProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'descricao'=> 'required|min:1|max:15|unique:TipoProduto,descricao, '
+            . $this->route('tipos_de_produtos') . ',id|required',
             //
         ];
     }

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->bigInteger('preco')->unique();
             $table->bigInteger('Total');
             $table->bigInteger('OBS');
-            $table->bigInteger('Usuarios_id');
-            $table->foreign('Usuarios_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
 
         Schema::enableForeignKeyConstraints();
