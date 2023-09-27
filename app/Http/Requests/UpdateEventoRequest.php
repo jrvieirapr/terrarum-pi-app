@@ -22,7 +22,12 @@ class UpdateEventoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'Nome' =>'min:2|max:50|required',
+            'Tipo' =>'min:2|max:50|unique:eventos,tipo'.$this->route('evento').'|required',
+            'Descricao' =>'min:2|max:50|required',
+            'Coordenadas' =>'min:2|max:50|unique:eventos,coordenada'.$this->route('evento').'|required',
+            'valor' =>'min:2|max:10|unique:eventos,valor'.$this->route('evento').'|required',
+            'Obs' =>'min:1|max:150|required',
         ];
     }
 }
