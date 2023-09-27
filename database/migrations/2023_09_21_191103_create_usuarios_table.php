@@ -15,14 +15,14 @@ return new class extends Migration
 
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->lineString('Nome');
-            $table->integer('CPF/CNPJ')->unique();
-            $table->lineString('CEP');
-            $table->lineString('nº');
-            $table->lineString('Telefone');
-            $table->bigInteger('login')->unique();
-            $table->bigInteger('senha');
-            $table->lineString('interesses');
+            $table->string('nome');
+            $table->integer('CPF_CNPJ')->unique();
+            $table->string('CEP');
+            $table->string('numero');
+            $table->string('Telefone');
+            $table->string('login')->unique();
+            $table->string('senha');
+            $table->string('interesses');
         });
 
         Schema::enableForeignKeyConstraints();

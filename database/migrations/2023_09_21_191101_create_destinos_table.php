@@ -15,9 +15,12 @@ return new class extends Migration
 
         Schema::create('destinos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
             $table->string('coordenadas')->unique();
+            $table->timestamps();
         });
 
+        
         Schema::enableForeignKeyConstraints();
     }
 
