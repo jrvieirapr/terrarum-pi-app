@@ -13,7 +13,11 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        //
+        //Pegar a lista do banco
+        $produtos = Produto::all();
+
+        //Retornar lista em formato json
+        return response()->json(['data' => $produtos]);
     }
 
     /**
@@ -29,9 +33,12 @@ class ProdutoController extends Controller
      */
     public function store(StoreProdutoRequest $request)
     {
-        //
-    }
+        // Crie um novo Tipo
+        $produto = Produto::create($request->all());
 
+        // Retorne o codigo 201
+        return response()->json($produto, 201);
+    }
     /**
      * Display the specified resource.
      */

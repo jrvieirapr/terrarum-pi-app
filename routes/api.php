@@ -38,3 +38,13 @@ Route::middleware('api')->prefix('eventos')->group(function(){
     Route::put('/{evento}',[EventoController::class, 'update']);
     Route::delete('/{evento}',[EventoController::class, 'destroy']);
 });
+
+//rotas produtos
+Route::middleware('api')->prefix('produtos')->group(function(){
+    Route::get('/',[ProdutoController::class, 'index']);
+    Route::post('/', [ProdutoController::class, 'store']);
+    Route::get('/{produto}',[ProdutoController::class, 'show']);
+    Route::put('/{produto}',[ProdutoController::class, 'update']);
+    Route::delete('/{produto}',[ProdutoController::class, 'destroy']);
+
+});
