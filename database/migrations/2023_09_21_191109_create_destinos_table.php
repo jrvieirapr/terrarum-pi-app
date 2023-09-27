@@ -15,7 +15,7 @@ return new class extends Migration
 
         Schema::create('destinos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('coordenadas');
+            $table->string('coordenadas')->unique();
         });
 
         Schema::enableForeignKeyConstraints();

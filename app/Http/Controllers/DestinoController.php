@@ -13,6 +13,9 @@ class DestinoController extends Controller
      */
     public function index()
     {
+        $destino = Destino::all();
+        //Retornar lista em formato json
+        return response()->json(['data' => $destino]);
         //
     }
 
@@ -29,14 +32,25 @@ class DestinoController extends Controller
      */
     public function store(StoreDestinoRequest $request)
     {
+        $destino = Destino::create($request->all());
+
+        // // Retorne o tipo e o code 201
+        return response()->json($destino, 201);
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Destino $destino)
+    public function show($id)
     {
+        $destino = Destino::find($id);
+
+        if (!$destino) {
+            return response()->json(['message' => 'Destino não encontrado'], 404);
+        }
+
+        return response()->json($destino);
         //
     }
 
@@ -45,22 +59,48 @@ class DestinoController extends Controller
      */
     public function edit(Destino $destino)
     {
+            
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDestinoRequest $request, Destino $destino)
+    public function update(UpdateDestinoRequest $request,$id)
     {
+        $destino = Destino::find($id);
+
+        if (!$destino) {
+            return response()->json(['message' => 'Destino não encontrado'], 404);
+        }
+
+        // Faça o update do tipo
+        $destino->update($request->all());
+
+        // Retorne o tipo
+        return response()->json($destino);
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Destino $destino)
+    public function destroy($id)
     {
+        $destino = Destino::find($id);
+        
+        if (!$destino) { 
+            return response()->json(['message' => 'Destino não encontrado!'], 404);
+        }  
+    
+        //sempre verificar se existe e se há classes dependentes, se sim, retornar erro.
+           
+        // // Delete the brand
+        // 
+        
+        $destino->delete();
+
+        return response()->json(['message' => 'Destino deletado com sucesso!'], 200);
         //
     }
 }
