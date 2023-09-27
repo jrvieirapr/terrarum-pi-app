@@ -40,6 +40,9 @@ Route::middleware('api')->prefix('tipos_de_produtos')->group(function () {
     Route::delete('/{tipos_de_produtos}', [TipoProdutoController::class, 'destroy']);
 });
 
+
+
+
 //rotas do evento
 Route::middleware('api')->prefix('eventos')->group(function(){
     Route::get('/',[EventoController::class,'index']);
