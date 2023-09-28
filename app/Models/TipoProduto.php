@@ -10,4 +10,6 @@ class TipoProduto extends Model
     use HasFactory;
     
     protected $fillable = ['descricao'];
+
+    protected $table = 'tipos_de_produtos';
 }

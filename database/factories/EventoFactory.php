@@ -21,13 +21,11 @@ class EventoFactory extends Factory
         return [
             'Nome' =>''.$this->faker->word.''.
                 $this->faker->numberBetween($int1 = 0 , $int2 = 99999),
-            'Tipo' => ''.$this->faker->word.''.
-            $this->faker->numberBetween($int1 = 0 , $int2 = 99999),
             'Descricao' => $this->faker->sentence(),
             'Coordenadas' => $this->faker->numberBetween($int1 = 0, $int2 = 99999),
             'valor' => $this->faker->randomFloat(2, 10, 1000),
             'Obs' => $this->faker->sentence(),
-            'tipoproduto_id' => function() {
+            'tipos_de_produto_id' => function() {
                 return TipoProduto::factory()->create()->id;
             },
             'destino_id' =>function() {

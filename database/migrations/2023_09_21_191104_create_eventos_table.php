@@ -15,13 +15,16 @@ return new class extends Migration
 
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
-            $table->lineString('Nome');
-            $table->lineString('Tipo')->unique();
-            $table->lineString('Descrição');
-            $table->integer('coordenadas')->unique();
-            $table->double('Valor')->unique();
-            $table->lineString('OBS');
-            $table->bigInteger('produtos_id');
+            $table->string('Nome');
+            $table->string('Descricao');
+            $table->string('Coordenadas')->unique();
+            $table->double('valor')->unique();
+            $table->string('Obs');
+            $table->unsignedBigInteger('tipos_de_produto_id');
+            $table->foreign('tipos_de_produto_id')->references('id')->on('tipos_de_produtos');
+            $table->unsignedBigInteger('destino_id');
+            $table->foreign('destino_id')->references('id')->on('destinos');
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();
