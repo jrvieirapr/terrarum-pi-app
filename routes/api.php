@@ -33,7 +33,7 @@ Route::middleware('api')->prefix('destinos')->group(function () {
 
 //Rotas Tipo de Produtos
 Route::middleware('api')->prefix('tipos_de_produtos')->group(function () {
-    Route::get('/', [TipoProdutoControlleroller::class, 'index']);
+    Route::get('/', [TipoProdutoController::class, 'index']);
     Route::post('/', [TipoProdutoController::class, 'store']);
     Route::get('/{tipo_produto}', [TipoProdutoController::class, 'show']);
     Route::put('/{tipo_produto}', [TipoProdutoController::class, 'update']);

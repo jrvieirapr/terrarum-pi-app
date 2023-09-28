@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('login')->unique();
             $table->string('senha');
             $table->string('interesses');
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

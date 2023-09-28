@@ -13,6 +13,10 @@ class UsuarioController extends Controller
      */
     public function index()
     {
+        $usuario = Usuario::all();
+        //Retornar lista em formato json
+        return response()->json(['data' => $usuario]);
+        //
         //
     }
 
@@ -29,14 +33,25 @@ class UsuarioController extends Controller
      */
     public function store(StoreUsuarioRequest $request)
     {
+        $usuario = Usuario::create($request->all());
+
+        // // Retorne o tipo e o code 201
+        return response()->json($usuario, 201);
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show($id)
     {
+        $usuario = Usuario::find($id);
+
+        if (!$usuario) {
+            return response()->json(['message' => 'Destino não encontrado'], 404);
+        }
+
+        return response()->json($usuario);
         //
     }
 
