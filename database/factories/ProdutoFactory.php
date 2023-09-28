@@ -20,7 +20,7 @@ class ProdutoFactory extends Factory
             'id' =>''.$this->faker->numberBetween($int1 = 0 , $int2 = 99999),
             'descricao' => $this->faker->sentence(),
             'destino_id' => $this->faker->numberBetween($int1 = 0, $int2 = 99999),
-            'tipo_de_produto_id' => fake()->unique()->name(),
+            'tipos_de_produtos_id' => fake()->unique()->name(),
             'esta_ativo' => $this->faker->sentence(),
         ];
     }

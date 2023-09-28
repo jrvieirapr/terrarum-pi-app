@@ -25,7 +25,7 @@ class UpdateProdutoRequest extends FormRequest
             'id' =>'min:2|required',
             'tipo' =>'min:2|max:50|unique:produtos,tipo|required',
             'destino_id' =>'min:2|max:50|required',
-            'tipo_de_produto_id' =>'min:2|unique:produtos,tipo_de_produto|required',
+            'tipos_de_produtos_id' =>'min:2|unique:produtos,tipo_de_produto|required',
             'esta_ativo' =>'min:2|max:10|unique:produtos,esta_ativo|required',
         ];
     }

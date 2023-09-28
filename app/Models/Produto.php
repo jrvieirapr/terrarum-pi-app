@@ -9,7 +9,7 @@ class Produto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tipo','destino_id','tipo_de_produto_id','esta_ativo'];
+    protected $fillable = ['tipo','destino_id','tipos_de_produtos_id','esta_ativo'];
     public $timestamps = false;
 }
 

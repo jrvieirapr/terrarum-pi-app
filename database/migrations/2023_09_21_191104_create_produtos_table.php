@@ -17,8 +17,8 @@ return new class extends Migration
             $table->lineString('descricao')->unique();
             $table->unsignedBigInteger('destino_id');
             $table->foreign('destino_id')->references('id')->on('destinos');
-            $table->unsignedBigInteger('tipo_de_produtos_id');
-            $table->foreign('tipo_de_produtos_id')->references('id')->on('tipos_de_produtos');
+            $table->unsignedBigInteger('tipos_de_produtos_id');
+            $table->foreign('tipos_de_produtos_id')->references('id')->on('tipos_de_produtos');
             $table->bigInteger('esta_ativo');
         });
 

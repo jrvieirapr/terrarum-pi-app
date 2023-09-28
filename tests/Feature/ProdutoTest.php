@@ -30,7 +30,7 @@ class ProdutoTest extends TestCase
             ->assertJsonCount(5, 'data')
             ->assertJsonStructure([
                 'data' => [
-                    '*' => ['id', 'tipo', 'destino_id', 'tipo_de_produto_id', 'esta_ativo', 'created_at', 'updated_at']
+                    '*' => ['id', 'tipo', 'destino_id', 'tipos_de_produtos_id', 'esta_ativo', 'created_at', 'updated_at']
                 ]
             ]);
     }   
