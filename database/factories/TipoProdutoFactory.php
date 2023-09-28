@@ -17,7 +17,10 @@ class TipoProdutoFactory extends Factory
     public function definition(): array
     {
         return [
-            'descricao'=>$this->faker->word." ". $this->faker->numberBetween($int1 = 0, $int2 = 99999)
+
+            'descricao'=>" ". $this->faker->word." ".
+            $this->faker->numberBetween($int1 = 0, $int2 = 99999)
+
             //
         ];
     }

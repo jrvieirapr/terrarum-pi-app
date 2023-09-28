@@ -16,13 +16,14 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->integer('CPF_CNPJ')->unique();
-            $table->string('CEP');
+            $table->integer('cpf_cnpj')->unique();
+            $table->string('cep');
             $table->string('numero');
-            $table->string('Telefone');
+            $table->string('telefone');
             $table->string('login')->unique();
             $table->string('senha');
             $table->string('interesses');
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

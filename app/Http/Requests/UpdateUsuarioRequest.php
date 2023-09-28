@@ -11,7 +11,7 @@ class UpdateUsuarioRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,16 @@ class UpdateUsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'nome'=>'required|min:1|',
+            'cpf_cnpj'=> 'required|min:1|unique:usuario,cpf_cnpj'
+            . $this->route('usuarios') . ',id|required',
+            'cep'=>'required|min:1|',
+            'numero'=> 'required|min:1|',
+            'telefone'=>'required|min:1|',
+            'login'=> 'required|min:1|unique:usuario,login'
+            . $this->route('usuarios') . ',id|required',
+            'senha'=> 'required|min:1|',
+            'interesses'=> 'required|min:1|',
             //
         ];
     }

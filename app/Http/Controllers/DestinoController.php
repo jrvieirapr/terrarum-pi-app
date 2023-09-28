@@ -77,6 +77,8 @@ class DestinoController extends Controller
         // Faça o update do tipo
         $destino->update($request->all());
 
+      
+
         // Retorne o tipo
         return response()->json($destino);
         //

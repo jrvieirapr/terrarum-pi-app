@@ -24,7 +24,7 @@ class StoreDestinoRequest extends FormRequest
         return [
             //
             'nome'=>'required|min:1|max:20',
-            'coordenadas'=> 'required|min:1|max:15|unique:destinos,coordenadas, '
+            'coordenadas'=> 'required|min:1|unique:destinos,coordenadas'
         ];
     }
 }
