@@ -66,5 +66,6 @@ class TipoProdutoController extends Controller
     }
 
 
+
     
 

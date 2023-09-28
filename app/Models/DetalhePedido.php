@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class DetalhePedido extends Model
 {
     use HasFactory;
+
+    protected $filablle = ['descricao','data','quantidade','valor_unitario', 'total', 'produtos_id', 'eventos_id',];
 }
+
+

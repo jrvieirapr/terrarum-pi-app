@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('detalhe_pedidos', function (Blueprint $table) {
             $table->id();
+            $table->string('descricao');
+            $table->date('data');
+            $table->integer('quantidade')->unique;
+            $table->integer('valor_unitario')->unique;
+            $table->double('total');
+            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->foreign('evento_id')->references('id')->on('eventos');
             $table->timestamps();
         });
     }

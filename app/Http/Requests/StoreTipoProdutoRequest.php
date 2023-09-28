@@ -22,7 +22,10 @@ class StoreTipoProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'descricao' => 'min:2|max:50|unique:tipos_produtos,descricao|required',
+            'descricao' => 'min:2|max:50|unique:detalhes_pedido,descricao|required',
+            'data'=> 'required|date',
+            'quantidade' => 'min:2|max:50|detalhes_pedido|required',
+            'valor_unitario' => 'min:'
         ];
     }
 }

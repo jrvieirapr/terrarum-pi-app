@@ -11,7 +11,7 @@ class StoreDetalhePedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreDetalhePedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'descricao' => 'min:2|max:50|unique:detalhes_pedido,descricao|required',
+            'data'=> 'required|date',
+            'quantidade' => 'min:2|max:50|detalhes_pedido|required',
+            'valor_unitario' => 'min:2|max:50|unique:detalhes_pedido,valor_unitario|required',
+            'total' => 'numeric|required',
+            'produtos_id' => 'required|exists:produtos,id',
+            'eventos_id' => 'required|exists:eventos,id',
         ];
     }
 }

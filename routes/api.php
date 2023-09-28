@@ -24,3 +24,13 @@ Route::post('/tipoproduto', [TipoProdutoController::class, 'store']);
 Route::get('/tipoproduto', [TipoProdutoController::class, 'show']);
 Route::put('/tipoproduto', [TipoProdutoController::class, 'update']);
 Route::delete('/tipoproduto', [TipoProdutoController::class, 'destroy']);
+
+Route::middleware('api')->prefix('detalhespedidos')->group (function(){
+
+Route::get('/', [DetalhePedidoController::class, 'index']);
+Route::post('/', [DetalhePedidoController::class, 'store']);
+Route::get('/detalhepedido', [DetalhePedidoController::class, 'show']);
+Route::put('/detalhepedido', [DetalhePedidoController::class, 'update']);
+Route::delete('/detalhepedido', [DetalhePedidoController::class, 'destroy']);
+
+});
