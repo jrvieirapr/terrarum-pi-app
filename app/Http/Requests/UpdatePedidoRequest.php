@@ -11,7 +11,7 @@ class UpdatePedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdatePedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'data' => 'date|required',
+            'produto' => 'min:2|required',
+            'quant' => 'min:2|required', 
+            'preco' => 'min:2|required',
+            'total' => 'min:2|required',
+            'obs' => 'min:2|required',
+            'usuario_id' => 'required|exists:usuarios,id',
+            'detalhes_pedido_id' => 'required|exists:detalhes_pedidos,id',
         ];
     }
 }

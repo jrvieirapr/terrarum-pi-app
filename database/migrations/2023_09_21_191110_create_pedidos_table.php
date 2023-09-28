@@ -16,14 +16,16 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('Tipo');
-            $table->dateTime('Data');
-            $table->bigInteger('Produto')->unique();
-            $table->bigInteger('Quantidade')->unique()->nullable();
-            $table->bigInteger('preco')->unique();
+            $table->date('Data');
+            $table->string('Produto');
+            $table->bigInteger('Quantidade');
+            $table->bigInteger('preco');
             $table->bigInteger('Total');
-            $table->bigInteger('OBS');
+            $table->string('OBS');
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('detalhes_pedido_id');
+            $table->foreign('detalhes_pedido_id')->references('id')->on('detalhes_pedidos');
         });
 
         Schema::enableForeignKeyConstraints();
