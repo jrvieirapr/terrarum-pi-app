@@ -51,3 +51,13 @@ Route::middleware('api')->prefix('eventos')->group(function(){
     Route::put('/{evento}',[EventoController::class, 'update']);
     Route::delete('/{evento}',[EventoController::class, 'destroy']);
 });
+
+//rotas do pedido
+Route::middleware('api')->prefix('pedidos')->group(function(){
+    Route::get('/',[PedidoController::class,'index']);
+    Route::post('/', [PedidoController::class,'store']);
+    Route::get('/{pedido}',[PedidoController::class, 'show']);
+    Route::put('/{pedido}',[PedidoController::class, 'update']);
+    Route::delete('/{pedido}',[PedidoController::class, 'destroy']);
+});
+
