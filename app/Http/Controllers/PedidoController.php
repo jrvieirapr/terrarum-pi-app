@@ -13,7 +13,11 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+         //pegar a lista do banco
+         $pedidos = Pedido::all();
+
+         //retornar lista em formato json
+         return response()->json(['data' => $pedidos]);
     }
 
     /**
@@ -29,15 +33,23 @@ class PedidoController extends Controller
      */
     public function store(StorePedidoRequest $request)
     {
-        //
+         // crie um novo pedido
+         $pedido = Pedido::create($request->all());
+         //retorne o evento e o 201
+         return response()->json($pedido, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pedido $pedido)
+    public function show($id)
     {
-        //
+         //procure pedido por id
+         $pedido = Pedido::find($id);
+         if (!$pedido) {
+             return response()->json(['message' => 'Pedido não encontrado'], 404);
+         }
+         return response()->json($pedido);
     }
 
     /**
@@ -51,16 +63,32 @@ class PedidoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePedidoRequest $request, Pedido $pedido)
+    public function update(UpdatePedidoRequest $request, $id)
     {
-        //
+         // Procure o pedido pela id
+         $pedido = Pedido::find($id);
+         if (!$pedido) {
+             return response()->json(['message' => 'Pedido não encontrado'], 404);
+         }
+         //faça o update do evento
+         $pedido->update($request->all());
+         //retorne o evento
+         return response()->json($pedido);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pedido $pedido)
+    public function destroy($id)
     {
-        //
+         //encontre um  pedido pelo ID
+         $pedido = Pedido::find($id);
+         if (!$pedido) {
+             return response()->json(['message' => 'Pedido não encontrado!'], 404);
+         }
+         //se tiver filho retornar erro
+         // delete o brand
+         $pedido->delete();
+         return response()->json(['message' => 'Pedido deletado com sucesso!'], 200);
     }
 }

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('Nome');
             $table->string('Descricao');
-            $table->string('Coordenadas')->unique();
-            $table->double('valor')->unique();
+            $table->string('Coordenadas');
+            $table->double('valor');
             $table->string('Obs');
             $table->unsignedBigInteger('tipos_de_produto_id');
             $table->foreign('tipos_de_produto_id')->references('id')->on('tipos_de_produtos');
