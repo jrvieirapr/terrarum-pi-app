@@ -11,20 +11,26 @@ class ProdutoTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
-    public function testListarTodosProduto()
+
+    /**Listar todos os Produtos
+     * @return void
+     */
+
+    public function testListarTodosProdutos()
     {
+        //Criar 5 Pedidos
+        //Salvar Temporario
         Produto::factory()->count(5)->create();
 
         // usar metodo GET para verificar o retorno
-        $response = $this->getJson('/api/destinos');
+        $response = $this->getJson('/api/produtos/');
 
         //Testar ou verificar saida
         $response->assertStatus(200)
             ->assertJsonCount(5, 'data')
             ->assertJsonStructure([
                 'data' => [
-                    '*' => ['id','descricao', 'destino_id', 'tipo_de_produto_id', 'esta_ativo', 'created_at', 'updated_at']
-
+                    '*' => ['id', 'tipo', 'destino_id', 'tipo_de_produto_id', 'esta_ativo', 'created_at', 'updated_at']
                 ]
             ]);
     }   

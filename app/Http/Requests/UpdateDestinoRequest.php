@@ -24,7 +24,7 @@ class UpdateDestinoRequest extends FormRequest
         return [
             'nome'=> 'required|min:1|max:20,'
             . $this->route('destino') . ',id|required',
-            'coordenadas'=> 'required|min:1|max:15|unique:destinos,coordenadas, '
+            'coordenadas'=> 'required|min:1|unique:destinos,coordenadas, '
             . $this->route('destino') . ',id|required',
             //
         ];

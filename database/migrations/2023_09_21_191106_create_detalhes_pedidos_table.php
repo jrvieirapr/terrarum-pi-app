@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
+        
 
         Schema::create('detalhes_pedidos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('descricao');
-            $table->bigInteger('pedidos_id');
+            $table->unsignedBigInteger('pedidos_id');
             $table->foreign('pedidos_id')->references('id')->on('pedidos');
-            $table->bigInteger('eventos_produtos_id');
-            $table->foreign('eventos_produtos_id')->references('id')->on('eventos_produtos');
+            $table->unsignedBigInteger('eventos_id');
+            $table->foreign('eventos_id')->references('id')->on('eventos');
             $table->dateTime('data');
             $table->bigInteger('quantidade')->unique();
             $table->bigInteger('valor_unitario')->unique();
             $table->bigInteger('total')->unique();
         });
 
-        Schema::enableForeignKeyConstraints();
+        
     }
 
     /**
