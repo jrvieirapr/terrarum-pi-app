@@ -35,9 +35,9 @@ Route::middleware('api')->prefix('destinos')->group(function () {
 Route::middleware('api')->prefix('tipos_de_produtos')->group(function () {
     Route::get('/', [TipoProdutoControlleroller::class, 'index']);
     Route::post('/', [TipoProdutoController::class, 'store']);
-    Route::get('/{tipos_de_produtos}', [TipoProdutoController::class, 'show']);
-    Route::put('/{tipos_de_produtos}', [TipoProdutoController::class, 'update']);
-    Route::delete('/{tipos_de_produtos}', [TipoProdutoController::class, 'destroy']);
+    Route::get('/{tipo_produto}', [TipoProdutoController::class, 'show']);
+    Route::put('/{tipo_produto}', [TipoProdutoController::class, 'update']);
+    Route::delete('/{tipo_produto}', [TipoProdutoController::class, 'destroy']);
 });
 
 
