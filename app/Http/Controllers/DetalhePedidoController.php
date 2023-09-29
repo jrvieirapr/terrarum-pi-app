@@ -13,30 +13,52 @@ class DetalhePedidoController extends Controller
      */
     public function index()
     {
-        //$detalhepedido = DetalhePedido::all();
-         $detalhes_pedido = DetalhePedido::Paginate(50);
-         $total = DetalhePedido::all()->count();
-         return view("detalhes_pedidos.index", compact(["detalhes_pedidos", "total"]));
-     }
+        $detalhepedido = DetalhePedido::all();
+        //pegar a lista do banco
+
+        $DetalhePedidos = DetalhePedido::all();
+
  
+
+        //retornar lista em formato json
+
+        return response()->json(['data' => $DetalhePedidos]);
+    }
  
      /**
       * Store a newly created resource in storage.
       */
      public function store(StoreDetalhePedidoRequest $request)
      {
-         //$data = $request->all();
-         $Detalhes_Pedido = DetalhePedido::create($data);
-         return redirect()->route('detalhespedido.index');
+        // crie um novo evento
+
+        $DetalhePedido = DetalhePedido::create($request->all());
+
+        //retorne o evento e o 201
+
+        return response()->json($DetalhePedido, 201);
+      
+       
+       
          //
      }
  
      /**
       * Display the specified resource.
       */
-     public function show(DetalhePedido $Detalhepedido)
+     public function show($id)
      {
-         return view("detalhes_produto.show", compact(["detalheproduto"]));
+         //procure evento por id
+
+        $DetalhePedido = DetalhePedido::find($id);
+
+        if (!$DetalhePedido) {
+
+            return response()->json(['message' => 'Evento não encontrado'], 404);
+
+        }
+
+        return response()->json($DetalhePedido);
      
      }
      
@@ -44,9 +66,20 @@ class DetalhePedidoController extends Controller
      /**
       * Update the specified resource in storage.
       */
-     public function update(UpdateDetalhePedidoRequest $request, DetalhePedido $detalhepedido)
+     public function update(UpdateDetalhePedidoRequest $request, $id)
      {
          $data = $request->all();
+         // Procure o tipo pela id
+
+        $detalhepedido= DetalhePedido::find($id);
+
+        if (!$detalhepedido) {
+
+            return response()->json(['message' => 'Detalhepedido não encontrado'], 404);
+
+        }
+
+        //faça o update do evento
          $detalhepedido->update($data);
          return redirect()->route('detalhespedidos.index');
      }
@@ -55,17 +88,27 @@ class DetalhePedidoController extends Controller
      /**
       * Remove the specified resource from storage.
       */
-     public function destroy(DetalhePedido $detalhepedido)
+     public function destroy($id)
      {
-         //
-         if (isset($detalhespedido)) {
-             $detalhespedido->delete();
-             //
-         }
-         return redirect()->route('detalhespedidos.index');
-     }
+        //encontre um  evento pelo ID
+
+        $DetalhePedido = DetalhePedido::find($id);
+
+        if (!$DetalhePedido) {
+
+            return response()->json(['message' => 'DetalhePedido não encontrado!'], 404);
+
+        }
+
+        //se tiver filho retornar erro
+
+        // delete o brand
+
+        $DetalhePedido->delete();
+
+        return response()->json(['message' => 'DetalhePedido deletado com sucesso!'], 200);
     }
-    
+}
     
  
  

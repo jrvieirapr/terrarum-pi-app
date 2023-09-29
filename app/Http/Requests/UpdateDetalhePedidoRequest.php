@@ -11,7 +11,7 @@ class UpdateDetalhePedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,7 +27,7 @@ class UpdateDetalhePedidoRequest extends FormRequest
             'data'=> 'required|date',
             'quantidade' => 'min:2|max:50|detalhes_pedido|required',$this->route('DetalhePedido') . ',id|required',
             'valor_unitario' => 'min:2|max:50|unique:detalhes_pedido,valor_unitario|required', $this->route('DetalhePedido') . ',id|required',
-            'total' => 'numeric|required',
+            'total' => 'numeric|unique:detalhes_pedido,total|required', $this->route('DetalhePedido') . ',id|required',
             'produtos_id' => 'required|exists:produtos,id',
             'eventos_id' => 'required|exists:eventos,id',
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('data');
             $table->integer('quantidade')->unique;
             $table->integer('valor_unitario')->unique;
-            $table->double('total');
+            $table->double('total')->unique;
             $table->foreign('produto_id')->references('id')->on('produtos');
             $table->foreign('evento_id')->references('id')->on('eventos');
             $table->timestamps();
