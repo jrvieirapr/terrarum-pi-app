@@ -17,11 +17,11 @@ class ProdutoFactory extends Factory
     public function definition(): array
     {
         return [
-            'id' =>''.$this->faker->numberBetween($int1 = 0 , $int2 = 99999),
+            'id' =>''.$this->faker->numberBetween($int1 = 0 , $int2 = 999),
             'descricao' => $this->faker->sentence(),
-            'destino_id' => $this->faker->numberBetween($int1 = 0, $int2 = 99999),
-            'tipos_de_produtos_id' => fake()->unique()->name(),
-            'esta_ativo' => $this->faker->sentence(),
+            'destino_id' => $this->faker->numberBetween($int1 = 0, $int2 = 999),
+            'tipos_de_produtos_id' => fake()->numberBetween($int1 = 0, $int2 = 999),
+            'esta_ativo' => $this->faker->numberBetween($int1 = 1, $int2 = 2),
         ];
     }
 }
