@@ -11,7 +11,7 @@ class UpdateProdutoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,10 @@ class UpdateProdutoRequest extends FormRequest
     {
         return [
             //
+            'descricao' => 'min:2|required|unique:produtos,descricao,' . $this->route("produto") . ',id',
+            'esta_ativo' => 'required|boolean',
+            'tipos_de_produto_id' => 'required|exists:tipos_de_produtos,id',
+            'destino_id' => 'required|exists:destinos,id',
         ];
     }
 }

@@ -11,4 +11,8 @@ class Usuario extends Model
 
     protected $fillable = ['nome, cpf_cnpj,cep,numero,telefone,login,senha,interesses'];
 
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class);
+    }
 }

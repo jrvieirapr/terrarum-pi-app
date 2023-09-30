@@ -15,11 +15,11 @@ return new class extends Migration
 
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
-            $table->string('Nome');
-            $table->string('Descricao');
-            $table->string('Coordenadas');
+            $table->string('nome');
+            $table->string('descricao');
+            $table->string('coordenadas');
             $table->double('valor');
-            $table->string('Obs');
+            $table->string('obs');
             $table->unsignedBigInteger('tipos_de_produto_id');
             $table->foreign('tipos_de_produto_id')->references('id')->on('tipos_de_produtos');
             $table->unsignedBigInteger('destino_id');
