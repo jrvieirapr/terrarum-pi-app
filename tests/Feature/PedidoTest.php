@@ -71,8 +71,6 @@ class PedidoTest extends TestCase
         }
     }
 
-
-
     public function test_criar_um_novo_pedido_com_detalhes_pedido_com_sucesso()
     {
         // Criar um usuário
@@ -177,7 +175,7 @@ class PedidoTest extends TestCase
         ]);
     }
 
-    public function testAtualizarPedidoComSucesso()
+    public function test_atualizar_pedido_com_sucesso()
     {
         // Crie um pedido existente
         $pedido = Pedido::factory()->create();
@@ -231,10 +229,8 @@ class PedidoTest extends TestCase
         }
     }
 
-
     public function test_atualizar_pedido_que_nao_existe()
     {
-
         $usuario = Usuario::factory()->create();
 
         // Dados de exemplo para atualizar o pedido
