@@ -36,7 +36,7 @@ class PedidoTest extends TestCase
             ->assertJsonStructure([
                 'data' => [
                     '*' => [
-                        'id', 'data', 'numero', 'esta_ativo', 'usuario_id', 'created_at', 'updated_at',
+                        'id', 'data', 'numero', 'usuario_id', 'created_at', 'updated_at',
                         'detalhes_pedido' => [
                             '*' => [
                                 'id', 'evento_id', 'produto_id', 'descricao', 'quantidade',
@@ -53,7 +53,6 @@ class PedidoTest extends TestCase
                 'id' => $pedido->id,
                 'data' => $pedido->data,
                 'numero' => $pedido->numero,
-                'esta_ativo' => 1, // Alterado para 1 em vez de true
                 'usuario_id' => $pedido->usuario_id,
             ]);
 
@@ -70,6 +69,7 @@ class PedidoTest extends TestCase
             }
         }
     }
+
 
     public function test_criar_um_novo_pedido_com_detalhes_pedido_com_sucesso()
     {

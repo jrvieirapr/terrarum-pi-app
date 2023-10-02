@@ -74,7 +74,7 @@ class ProdutoController extends Controller
             return response()->json(['message' => 'Produto não encontrado!'], 404);
         }
         // Verifique se existem detalhes de pedidos dependentes
-        if ($produto->detalhes_pedidos->count() > 0) {
+        if ($produto->detalhesPedido->count() > 0) {
             return response()->json(['message' => 'Não é possível excluir o produto, pois existem detalhes de pedidos dependentes associados a ele.'], 422);
         }
         // delete o brand
