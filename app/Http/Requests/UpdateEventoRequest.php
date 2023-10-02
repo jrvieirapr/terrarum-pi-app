@@ -27,7 +27,7 @@ class UpdateEventoRequest extends FormRequest
             'coordenadas' => 'min:2|required',
             'valor' => 'min:2|max:10|required',
             'obs' => 'min:1|max:150|required',
-            'tipos_de_produto_id' => 'required|exists:tipos_de_produtos,id',
+            'tipo_produto_id' => 'required|exists:tipo_produtos,id',
             'destino_id' => 'required|exists:destinos,id',
         ];
     }

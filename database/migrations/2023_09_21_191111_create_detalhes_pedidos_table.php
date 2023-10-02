@@ -15,15 +15,17 @@ return new class extends Migration
 
         Schema::create('detalhes_pedidos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('descricao');
+            $table->string('descricao');
             $table->unsignedBigInteger('pedido_id');
             $table->foreign('pedido_id')->references('id')->on('pedidos');
             $table->unsignedBigInteger('evento_id');
             $table->foreign('evento_id')->references('id')->on('eventos');
-            $table->dateTime('data');
-            $table->bigInteger('quantidade')->unique();
-            $table->bigInteger('valor_unitario')->unique();
-            $table->bigInteger('total')->unique();
+            $table->unsignedBigInteger('produto_id');
+            $table->foreign('produto_id')->references('id')->on('produtos');
+            $table->bigInteger('quantidade');
+            $table->double('valor_unitario');
+            $table->double('valor_total');
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

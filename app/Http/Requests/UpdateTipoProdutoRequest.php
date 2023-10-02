@@ -22,8 +22,8 @@ class UpdateTipoProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'descricao'=> 'required|min:1|unique:TipoProduto,descricao, '
-            . $this->route('tipos_de_produtos') . ',id|required',
+            'descricao' => 'required|min:1|unique:tipo_produtos,descricao, '
+                . $this->route('tipos_de_produtos') . ',id|required',
             //
         ];
     }

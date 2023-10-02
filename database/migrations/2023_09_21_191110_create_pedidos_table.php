@@ -15,17 +15,12 @@ return new class extends Migration
 
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('Tipo');
-            $table->date('Data');
-            $table->string('Produto');
-            $table->bigInteger('Quantidade');
-            $table->bigInteger('preco');
-            $table->bigInteger('Total');
-            $table->string('OBS');
+            $table->date('data');
+            $table->integer('numero')->unique();
+            $table->boolean('esta_ativo');
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
-            $table->unsignedBigInteger('detalhes_pedido_id');
-            $table->foreign('detalhes_pedido_id')->references('id')->on('detalhes_pedidos');
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

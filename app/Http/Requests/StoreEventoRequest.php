@@ -22,12 +22,12 @@ class StoreEventoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Nome' =>'min:2|max:50|required',
-            'Descricao' =>'min:2|required',
-            'Coordenadas' =>'min:2|required',
-            'valor' =>'min:2|required',
-            'Obs' =>'min:1|required',
-            'tipos_de_produto_id' => 'required|exists:tipos_de_produtos,id',
+            'nome' => 'min:2|max:50|required',
+            'descricao' => 'min:2|required',
+            'coordenadas' => 'min:2|required',
+            'valor' => 'min:2|required',
+            'obs' => 'min:1|required',
+            'tipo_produto_id' => 'required|exists:tipo_produtos,id',
             'destino_id' => 'required|exists:destinos,id',
         ];
     }

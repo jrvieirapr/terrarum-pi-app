@@ -52,13 +52,6 @@ class EventoController extends Controller
         return response()->json($evento);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Evento $evento)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

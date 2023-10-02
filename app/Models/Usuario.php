@@ -9,7 +9,7 @@ class Usuario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome, cpf_cnpj,cep,numero,telefone,login,senha,interesses'];
+    protected $fillable = ['nome', 'cpf_cnpj', 'cep', 'numero', 'telefone', 'login', 'senha', 'interesses'];
 
     public function pedidos()
     {

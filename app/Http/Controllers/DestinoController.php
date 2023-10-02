@@ -19,13 +19,7 @@ class DestinoController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -59,14 +53,14 @@ class DestinoController extends Controller
      */
     public function edit(Destino $destino)
     {
-            
+
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDestinoRequest $request,$id)
+    public function update(UpdateDestinoRequest $request, $id)
     {
         $destino = Destino::find($id);
 
@@ -77,7 +71,7 @@ class DestinoController extends Controller
         // Faça o update do tipo
         $destino->update($request->all());
 
-      
+
 
         // Retorne o tipo
         return response()->json($destino);
@@ -90,16 +84,16 @@ class DestinoController extends Controller
     public function destroy($id)
     {
         $destino = Destino::find($id);
-        
-        if (!$destino) { 
+
+        if (!$destino) {
             return response()->json(['message' => 'Destino não encontrado!'], 404);
-        }  
-    
+        }
+
         //sempre verificar se existe e se há classes dependentes, se sim, retornar erro.
-           
+
         // // Delete the brand
-        // 
-        
+        //
+
         $destino->delete();
 
         return response()->json(['message' => 'Destino deletado com sucesso!'], 200);

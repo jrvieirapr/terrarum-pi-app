@@ -20,13 +20,6 @@ class UsuarioController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +28,7 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::create($request->all());
 
-        // // Retorne o tipo e o code 201
+        // // Retorne o Usuario e o code 201
         return response()->json($usuario, 201);
         //
     }
@@ -48,34 +41,47 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
 
         if (!$usuario) {
-            return response()->json(['message' => 'Destino não encontrado'], 404);
+            return response()->json(['message' => 'Usuário não encontrado!'], 404);
         }
 
         return response()->json($usuario);
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Usuario $usuario)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUsuarioRequest $request, Usuario $usuario)
+    public function update(UpdateUsuarioRequest $request, $id)
     {
-        //
+        $usuario = Usuario::find($id);
+
+        if (!$usuario) {
+            return response()->json(['message' => 'Usuário não encontrado!'], 404);
+        }
+
+        // Faça o update do tipo
+        $usuario->update($request->all());
+
+        // Retorne o tipo
+        return response()->json($usuario);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $usuario = Usuario::find($id);
+
+        if (!$usuario) {
+            return response()->json(['message' => 'Usuário não encontrado!'], 404);
+        }
+        //sempre verificar se existe e se há classes dependentes, se sim, retornar erro.
+
+        // Delete the brand
+        $usuario->delete();
+
+        return response()->json(['message' => 'Usuário deletado com sucesso!'], 200);
     }
 }

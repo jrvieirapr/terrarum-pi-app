@@ -11,6 +11,8 @@ class TipoProduto extends Model
 
     protected $fillable = ['descricao'];
 
+    protected $table = 'tipo_produtos';
+
 
     public function produtos()
     {

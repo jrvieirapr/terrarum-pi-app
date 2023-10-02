@@ -9,7 +9,7 @@ class Produto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descricao', 'esta_ativo', 'tipos_de_produto_id', 'destino_id'];
+    protected $fillable = ['descricao', 'esta_ativo', 'tipo_produto_id', 'destino_id'];
 
     public function destino()
     {
@@ -18,6 +18,11 @@ class Produto extends Model
 
     public function tipo_de_produto()
     {
-        return $this->belongsTo(TipoDeProduto::class, 'tipos_de_produto_id');
+        return $this->belongsTo(TipoDeProduto::class, 'tipo_produto_id');
+    }
+
+    public function detalhesPedido()
+    {
+        return $this->hasMany(DetalhePedido::class);
     }
 }

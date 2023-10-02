@@ -22,14 +22,16 @@ class StorePedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'data' => 'date|required',
-            'produto' => 'min:2|required',
-            'quant' => 'min:2|required', 
-            'preco' => 'min:2|required',
-            'total' => 'min:2|required',
-            'obs' => 'min:2|required',
+            'data' => 'required|date',
+            'numero' => 'required|integer|unique:pedidos',
+            'esta_ativo' => 'required|boolean',
             'usuario_id' => 'required|exists:usuarios,id',
-            'detalhes_pedido_id' => 'required|exists:detalhes_pedidos,id',
+            'detalhes_pedido.*.evento_id' => 'required|exists:eventos,id',
+            'detalhes_pedido.*.produto_id' => 'required|exists:produtos,id',
+            'detalhes_pedido.*.descricao' => 'required|string',
+            'detalhes_pedido.*.quantidade' => 'required|integer|min:1',
+            'detalhes_pedido.*.valor_unitario' => 'required|numeric',
+            'detalhes_pedido.*.valor_total' => 'required|numeric',
         ];
     }
 }

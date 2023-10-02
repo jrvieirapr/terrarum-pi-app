@@ -14,53 +14,70 @@ class DetalhePedidoController extends Controller
     public function index()
     {
         //
+        $detalhePedidos = DetalhePedido::all();
+
+        return response()->json(['data' => $detalhePedidos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreDetalhePedidoRequest $request)
     {
-        //
+        $detalhePedido = DetalhePedido::create($request->all());
+
+        // // Retorne o tipo e o code 201
+        return response()->json($detalhePedido, 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(DetalhePedido $detalhePedido)
+    public function show($id)
     {
-        //
-    }
+        $detalhePedido = DetalhePedido::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(DetalhePedido $detalhePedido)
-    {
-        //
+        if (!$detalhePedido) {
+            return response()->json(['message' => 'Detalhe Pedido não encontrado'], 404);
+        }
+
+        return response()->json($detalhePedido);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDetalhePedidoRequest $request, DetalhePedido $detalhePedido)
+    public function update(UpdateDetalhePedidoRequest $request, $id)
     {
-        //
+        $detalhePedido = DetalhePedido::find($id);
+
+        if (!$detalhePedido) {
+            return response()->json(['message' => 'Detalhe Pedido não encontrado'], 404);
+        }
+
+        // Faça o update do tipo
+        $detalhePedido->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DetalhePedido $detalhePedido)
+    public function destroy($id)
     {
+        $detalhePedido = DetalhePedido::find($id);
+
+        if (!$detalhePedido) {
+            return response()->json(['message' => 'Detalhe Pedido não encontrado!'], 404);
+        }
+
+        //sempre verificar se existe e se há classes dependentes, se sim, retornar erro.
+
+        // // Delete the brand
         //
+
+        $detalhePedido->delete();
+
+        return response()->json(['message' => 'Detalhe Pedido deletado com sucesso!'], 200);
     }
 }

@@ -20,13 +20,6 @@ class TipoProdutoController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -56,14 +49,6 @@ class TipoProdutoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TipoProduto $tipoProduto)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateTipoProdutoRequest $request, $id)
@@ -89,17 +74,15 @@ class TipoProdutoController extends Controller
     {
         $tipos_produtos = TipoProduto::find($id);
 
-          if (!$tipos_produtos) { 
-              return response()->json(['message' => 'Tipo não encontrado!'], 404);
-          }  
+          if (!$tipos_produtos) {
+              return response()->json(['message' => 'Tipo não encontrado'], 404);
+          }
           //sempre verificar se existe e se há classes dependentes, se sim, retornar erro.
-          
 
-    
           // Delete the brand
           $tipos_produtos->delete();
-  
-          return response()->json(['message' => 'Tipo deletado com sucesso!'], 200);
+
+          return response()->json(['message' => 'Tipo deletado com sucesso'], 200);
         //
     }
 }

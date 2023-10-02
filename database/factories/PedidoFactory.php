@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\DetalhePedido;
+use App\Models\Pedido;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,23 +21,20 @@ class PedidoFactory extends Factory
     {
         return [
 
-            'id' => '' . $this->faker->numberBetween($int1 = 0, $int2 = 99999),
-
             'data' => $this->faker->date,
-
-            'produto' => $this->faker->name(),
-
-            'quantidade' => '' . $this->faker->numberBetween($int1 = 0, $int2 = 999),
-
-            'preco' => '' . $this->faker->numberBetween($int1 = 1, $int2 = 99),
-
-            'total' => '' . $this->faker->numberBetween($int1 = 1, $int2 = 999),
-
-            'obs' => '' . $this->faker->sentence(),
-
-            'usuarios_id' => '' . $this->faker->numberBetween($int1 = 1, $int2 = 99999),
-
-            'detalhes_pedido_id' => '' . $this->faker->numberBetween($int1 = 1, $int2 = 99999),
+            'numero' => $this->faker->unique()->randomNumber(5),
+            'esta_ativo' => $this->faker->boolean,
+            'usuario_id' => function () {
+                return Usuario::factory()->create()->id;
+            },
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Pedido $pedido) {
+            // Adicione 5 detalhes de pedido associados ao pedido
+            DetalhePedido::factory(5)->create(['pedido_id' => $pedido->id]);
+        });
     }
 }

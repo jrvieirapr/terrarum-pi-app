@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Destino;
+use App\Models\TipoProduto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +20,14 @@ class ProdutoFactory extends Factory
     {
         return [
             //
+            'descricao' => $this->faker->unique()->word,
+            'esta_ativo' => $this->faker->boolean,
+            'tipo_produto_id' => function () {
+                return TipoProduto::factory()->create()->id;
+            },
+            'destino_id' => function () {
+                return Destino::factory()->create()->id;
+            },
         ];
     }
 }

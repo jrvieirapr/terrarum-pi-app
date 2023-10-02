@@ -9,7 +9,7 @@ class Evento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'descricao', 'coordenadas', 'valor', 'obs', 'tipos_de_produto_id', 'destino_id'];
+    protected $fillable = ['nome', 'descricao', 'coordenadas', 'valor', 'obs', 'tipo_produto_id', 'destino_id'];
 
     public function destino()
     {
@@ -18,6 +18,11 @@ class Evento extends Model
 
     public function tipo_de_produto()
     {
-        return $this->belongsTo(TipoDeProduto::class, 'tipos_de_produto_id');
+        return $this->belongsTo(TipoDeProduto::class, 'tipo_produto_id');
+    }
+
+    public function detalhesPedido()
+    {
+        return $this->hasMany(DetalhePedido::class);
     }
 }

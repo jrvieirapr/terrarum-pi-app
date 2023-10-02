@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('coordenadas');
             $table->double('valor');
             $table->string('obs');
-            $table->unsignedBigInteger('tipos_de_produto_id');
-            $table->foreign('tipos_de_produto_id')->references('id')->on('tipos_de_produtos');
+            $table->unsignedBigInteger('tipo_produto_id');
+            $table->foreign('tipo_produto_id')->references('id')->on('tipo_produtos');
             $table->unsignedBigInteger('destino_id');
             $table->foreign('destino_id')->references('id')->on('destinos');
             $table->timestamps();

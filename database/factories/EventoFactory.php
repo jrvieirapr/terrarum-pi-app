@@ -19,16 +19,15 @@ class EventoFactory extends Factory
     public function definition(): array
     {
         return [
-            'Nome' =>''.$this->faker->word.''.
-                $this->faker->numberBetween($int1 = 0 , $int2 = 99999),
-            'Descricao' => $this->faker->sentence(),
-            'Coordenadas' => $this->faker->numberBetween($int1 = 0, $int2 = 99999),
+            'nome' => $this->faker->unique()->word,
+            'descricao' => $this->faker->sentence(),
+            'coordenadas' => $this->faker->unique()->numberBetween($int1 = 0, $int2 = 99999),
             'valor' => $this->faker->randomFloat(2, 10, 1000),
-            'Obs' => $this->faker->sentence(),
-            'tipos_de_produto_id' => function() {
+            'obs' => $this->faker->sentence(),
+            'tipo_produto_id' => function () {
                 return TipoProduto::factory()->create()->id;
             },
-            'destino_id' =>function() {
+            'destino_id' => function () {
                 return Destino::factory()->create()->id;
             }
         ];

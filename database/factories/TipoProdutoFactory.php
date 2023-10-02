@@ -18,10 +18,8 @@ class TipoProdutoFactory extends Factory
     {
         return [
 
-            'descricao'=>" ". $this->faker->word." ".
-            $this->faker->numberBetween($int1 = 0, $int2 = 99999)
+            'descricao' => $this->faker->unique()->word, // Garante que a descrição seja única
 
-            //
         ];
     }
 }

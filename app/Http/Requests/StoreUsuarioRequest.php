@@ -22,14 +22,14 @@ class StoreUsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'=>'required|min:1|',
-            'cpf_cnpj'=> 'required|min:1|unique:usuario,cpf_cnpj',
-            'cep'=>'required|min:1|',
-            'numero'=> 'required|min:1|',
-            'telefone'=>'required|min:1|',
-            'login'=> 'required|min:1|unique:usuario,login',
-            'senha'=> 'required|min:1|',
-            'interesses'=> 'required|min:1|',
+            'nome' => 'required|string',
+            'cpf_cnpj' => 'required|string|unique:usuarios',
+            'cep' => 'required|string',
+            'numero' => 'required|string', // Atualizado para aceitar uma string
+            'telefone' => 'required|string',
+            'login' => 'required|string|unique:usuarios',
+            'senha' => 'required|string',
+            'interesses' => 'required|string',
             //
         ];
     }
